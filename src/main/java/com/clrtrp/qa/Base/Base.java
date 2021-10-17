@@ -1,6 +1,7 @@
 package com.clrtrp.qa.Base;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
@@ -14,13 +15,22 @@ public class Base {
 	public static Properties pro;
 	public static WebDriver driver;
 
-	public Base() throws IOException{
+	public Base(){
 		pro=new Properties();
-		FileInputStream ip=new FileInputStream("./configuration/config.properties");
-		pro.load(ip);
+		FileInputStream ip = null;
+		try {
+			ip = new FileInputStream("./configuration/config.properties");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			pro.load(ip);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public  void intitialisation(){
+	public   void intitialisation(){
 
      
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
@@ -28,7 +38,7 @@ public class Base {
 
 		driver.get(pro.getProperty("url"));
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(4, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
 	}
 
 	public void teardown() throws InterruptedException{

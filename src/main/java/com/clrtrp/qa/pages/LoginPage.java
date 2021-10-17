@@ -24,19 +24,19 @@ public class LoginPage extends Base {
 
 
 
-	@FindBy(id = "userAccountLink")
+	@FindBy(xpath = "//*[contains(text(),'Your trips')]")
 	WebElement logintab;
 
-	@FindBy(id = "SignIn")
+	@FindBy(xpath = "//div[@class='pt-2']//button")
 	public WebElement signclick;
 
-	@FindBy(id="email")
+	@FindBy(xpath="//input[@data-testid='email']")
 	WebElement username;
 
-	@FindBy(id = "password")
+	@FindBy(xpath = "//input[@data-testid='password']")
 	WebElement password;
 
-	@FindBy(id = "signInButton")
+	@FindBy(xpath = "//span[@class='fs-3 fw-550']")
 	WebElement submit;
 
 
@@ -46,7 +46,7 @@ public class LoginPage extends Base {
 		logintab.click();
 		signclick.click();
 		Thread.sleep(4000);
-		driver.switchTo().frame("modal_window");
+//		driver.switchTo().frame("_hjRemoteVarsFrame");
 		username.sendKeys(user);
 		password.sendKeys(pass);
 		submit.click();
