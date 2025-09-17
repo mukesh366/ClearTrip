@@ -30,7 +30,7 @@ public class Listener extends Base implements ITestListener{
 
 	public void onTestFailure(ITestResult result) {
 		System.out.println("The name of failed test cases is "+ result.getName());
-			Screenshot.screenShot();
+//			Screenshot.screenShot();
 			
 			
 	}
