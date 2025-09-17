@@ -1,5 +1,6 @@
 package com.clrtrp.TestPages;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -21,7 +22,7 @@ public class date {
 
 		driver.get("https://www.cleartrip.com/");
 		//driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(4, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
 		
 		driver.findElement(By.xpath("//div[@class='ml-2 mr-2 c-grey-50 fs-4 flex flex-1'][contains(text(),'Hotels')]")).click();
 		try {
