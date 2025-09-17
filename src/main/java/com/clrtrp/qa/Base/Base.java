@@ -3,11 +3,14 @@ package com.clrtrp.qa.Base;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base {
 
@@ -32,13 +35,13 @@ public class Base {
 
 	public   void intitialisation(){
 
-     
-		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		   WebDriverManager.chromedriver().setup();
+	
 		driver=new ChromeDriver();
 
 		driver.get(pro.getProperty("url"));
 		driver.manage().window().maximize();
-		driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
 	}
 
 	public void teardown() throws InterruptedException{
