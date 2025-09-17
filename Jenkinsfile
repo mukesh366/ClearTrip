@@ -33,5 +33,5 @@ pipeline {
                 sh "${MAVEN_HOME}/bin/mvn test"
             }
         }
-
+    }
 }
