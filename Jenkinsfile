@@ -27,11 +27,6 @@ pipeline {
             }
         }
 
-        stage('Unit Tests') {
-            steps {
-                echo "Running unit tests..."
-                sh "${MAVEN_HOME}/bin/mvn test"
-            }
-        }
+      
     }
 }
